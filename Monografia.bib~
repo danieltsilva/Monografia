@@ -1,0 +1,54 @@
+@book{eldracher1994function,
+  title={Function approximation with continuous valued activation functions in CMAC},
+  author={Eldracher, Martin and Staller, Alexander and Pompl, Ren{\'e}},
+  year={1994},
+  publisher={Citeseer}
+}
+
+@article{kaelbling1996reinforcement,
+  title={Reinforcement learning: A survey},
+  author={Kaelbling, Leslie Pack and Littman, Michael L. and Moore, Andrew W},
+  journal={arXiv preprint cs/9605103},
+  year={1996}
+}
+
+@article{mitchell1997machine,
+  title={Machine learning. 1997},
+  author={Mitchell, Tom M},
+  journal={Burr Ridge, IL: McGraw Hill},
+  volume={45},
+  year={1997}
+}
+
+@article{nissen2007large,
+  title={Large scale reinforcement learning using q-sarsa ($\lambda$) and cascading neural networks},
+  author={Nissen, Steffen},
+  journal={Master's Thesis, Department of Computer Science, University of Copenhagen},
+  year={2007}
+}
+
+@inproceedings{ortiz2008relational,
+  title={A relational learning approach to activity recognition from sensor readings},
+  author={Ortiz, Javier and Garc{\'\i}a, Angel and Borrajo, Daniel},
+  booktitle={Intelligent Systems, 2008. IS'08. 4th International IEEE Conference},
+  volume={3},
+  pages={19--8},
+  year={2008},
+  organization={IEEE}
+}
+
+@inproceedings{selvatici2004combinaccao,
+  title={Combina{\c{c}}{\~a}o de sensores atrav{\'e}s da coopera{\c{c}}{\~a}o de comportamentos primitivos},
+  author={Selvatici, Antonio Henrique Pinto and Costa, Anna Helena Reali and de T{\'e}cnicas Inteligentes, LTI--Laborat{\'o}rio},
+  booktitle={Anais do XV Congresso Brasileiro de Autom{\'a}tica CBA 2004},
+  year={2004}
+}
+
+@book{sutton1998reinforcement,
+  title={Reinforcement learning: An introduction},
+  author={Sutton, Richard S and Barto, Andrew G},
+  volume={1},
+  number={1},
+  year={1998},
+  publisher={Cambridge Univ Press}
+}

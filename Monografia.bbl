@@ -1,0 +1,24 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.53 }
+
+\bibitem[Arkin 1998]{arkin1998behavior}
+\abntrefinfo{Arkin}{ARKIN}{1998}
+{ARKIN, R.~C. \emph{Behavior-based robotics}. [S.l.]: MIT press, 1998.}
+
+\bibitem[Ortiz, Garc{\'\i}a e Borrajo 2008]{ortiz2008relational}
+\abntrefinfo{Ortiz, Garc{\'\i}a e Borrajo}{ORTIZ; GARC{\'I}A; BORRAJO}{2008}
+{ORTIZ, J.; GARC{\'I}A, A.; BORRAJO, D. A relational learning approach to
+  activity recognition from sensor readings. In:  IEEE. \emph{Intelligent
+  Systems, 2008. IS'08. 4th International IEEE Conference}. [S.l.], 2008. v.~3,
+  p. 19--8.}
+
+\bibitem[Sutton e Barto 1998]{sutton1998reinforcement}
+\abntrefinfo{Sutton e Barto}{SUTTON; BARTO}{1998}
+{SUTTON, R.~S.; BARTO, A.~G. \emph{Reinforcement learning: An introduction}.
+  [S.l.]: Cambridge Univ Press, 1998.}
+
+\end{thebibliography}
