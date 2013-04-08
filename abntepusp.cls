@@ -1775,7 +1775,7 @@ Para mais informacoes, leia o manual da classe.\MessageBreak%
 %  \hypersetup{pdftitle=\ABNTtitulodata,pdfauthor=\ABNTautordata}
   \begin{center} 
     \espaco{1.2}
-    {\autorformat \ABNTautordata} \\[8cm] 
+    {\autorformat \ABNTautordata} \\[6cm] 
     {\tituloformat \ABNTuppercasetitulodata}
 
     % comentário

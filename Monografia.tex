@@ -14,8 +14,31 @@
 \usepackage{txfonts}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{algpseudocode,algorithm}
 
 \renewcommand{\familydefault}{\sfdefault}
+
+% Declaracoes em Português
+%\algrenewcommand\algorithmicend{\textbf{fim}}
+%\algrenewcommand\algorithmicdo{\textbf{faça}}
+%\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+%\algrenewcommand\algorithmicfor{\textbf{para}}
+%\algrenewcommand\algorithmicif{\textbf{se}}
+%\algrenewcommand\algorithmicthen{\textbf{então}}
+%\algrenewcommand\algorithmicelse{\textbf{senão}}
+%\algrenewcommand\algorithmicreturn{\textbf{devolve}}
+%\algrenewcommand\algorithmicfunction{\textbf{função}}
+
+% Rearranja os finais de cada estrutura
+%\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+%\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+%\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+%\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
+% O comando For, a seguir, retorna 'para #1 -- #2 até #3 faça'
+%\algnewcommand\algorithmicto{\textbf{até}}
+%\algrenewtext{For}[3]%
+%{\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
 
 % Math -------------------------------------------------------------------
 \newtheorem{theorem}{Teorema}{\bfseries}{\itshape}
@@ -90,15 +113,24 @@ Agradecemos \\
 
 À nossa orientadora, Anna Helena Reali Costa, pela direção e paciência.
 
-À nossas famílias, pelo apoio e compreensão.
+A nossas famílias, pelo apoio e compreensão.
 \end{agradecimentos}
 
 \begin{resumo}
-Aprendizado por reforço permite que um agente aprenda a realizar tarefas de forma otimizada através de experiências obtidas de interações com o ambiente. Este texto apresenta a contextualização do assunto e busca detalhar este conceito a ser aplicado em navegação robótica.
+Aprendizado por reforço permite que um agente aprenda a realizar tarefas de
+forma otimizada através de experiências obtidas de interações com o ambiente.
+Aplicado na navegação robótica, o aprendizado por reforço possibilita um robô achar 
+melhores caminhos partindo de uma aprendizado adquirido em navegações passadas.
+Este texto apresenta a base teórica juntamente com o conjunto de algoritmos 
+destinados à solução do problema do aprendizado por reforço.
 \end{resumo}
 
 \begin{abstract}
-Reinforcement learning allows an agent learn to perform tasks optimally through experiences gained from interactions with the environment. This paper presents the context of the subject and aims to detail this concept to be applied to robotic navigation.
+Reinforcement learning allows an agent learn to perform tasks optimally through 
+experiences gained from interactions with the environment. Applied in robotic navigation, 
+the reinforcement learning enables a robot to find the best paths starting from a 
+learning adiquirido in past navigations. This paper presents the theoretical basis 
+with a set of algorithms for the solution of the problem of reinforcement learning.
 \end{abstract}
 
 %\begin{resume}
@@ -141,13 +173,7 @@ recompensa, a escolher sequências de ações que produzam o maior acúmulo de recom
 Os algoritmos de aprendizado por reforço estão relacionados com algoritmos de programação
 dinâmica, frequentemente usados para solucionar problemas de otimização. Entretanto, como
 o aprendizado por reforço se dá por meio de repetidas interações do agente com o ambiente,
-o processo de aprendizado é muito lento. Com o objetivo de contornar este problema, propõe-
-se o uso de formas de transferência do conhecimento aprendido em tarefas anteriores,
-expresso por políticas de atuações, em novas tarefas similares com as quais o agente se
-depara, visando, com isso, que o agente demonstre um comportamento adequado mesmo
-estando no início do processo de aprendizagem. Conforme seu conhecimento sobre a tarefa
-atual aumenta, com a evolução de sua experiência e do processo de aprendizagem, sua
-atuação ficará cada vez melhor.
+o processo de aprendizado é muito lento.
 
 Para demonstrar a eficácia desta proposta, um robô será utilizado neste projeto, como
 aprendiz, em tarefas de navegação em ambientes internos a edifícios. O robô, ou agente,
@@ -196,7 +222,7 @@ Desta forma o modelo consiste de:
 \begin{figure}[!h]
     \centering
     \includegraphics{modelo_aprendizado_reforco}
-    \caption{Modelo padrão de Aprendizado por Reforço -- neste modelo tem-se o agente B interagindo com o ambiente T; o agente percebe o estado atual s através da entrada i, executa uma ação a, observa o novo estado e recebe uma recompensa r.}
+    \caption[Modelo padrão de Aprendizado por Reforço]{Modelo padrão de Aprendizado por Reforço -- neste modelo tem-se o agente B interagindo com o ambiente T; o agente percebe o estado atual s através da entrada i, executa uma ação a, observa o novo estado e recebe uma recompensa r.}
     \label{fig:modelo_aprendizado_reforco}
 \end{figure}
 
@@ -205,14 +231,14 @@ função do reforço. A função alvo a ser aprendida é uma política de controle $ \p
 que gera uma ação a apropriada do conjunto A, dado um estado atual s do conjunto S. É
 necessário que o agente colete experiências úteis sobre possíveis estados, ações, transições
 e recompensas do sistema para agir de forma ótima. Os métodos de aprendizado por reforço
-ditam como essa política ? deve mudar conforme os resultados da experiência do agente são
+ditam como essa política $\pi$ deve mudar conforme os resultados da experiência do agente são
 contabilizados.
 
 Neste documento ainda consideramos que o agente não sabe quantas ações irá
 realizar até chegar ao estado final, ou seja, o agente espera eventualmente parar, porém não
 sabe quando isso irá acontecer; tal abordagem é denominada \emph{horizonte infinito}.
 
-A seguir introduzimos o conceito de \emph{Processos de Decisão de Markov} (PDM), que
+A seguir é apresentado o conceito de \emph{Processos de Decisão de Markov} (PDM), que
 pode ser utilizado para compreensão e solução do modelo matemático para aprendizado por
 reforço.
 
@@ -244,7 +270,6 @@ específica $R_{t}$ que o agente deve maximizar.
 Portanto o agente pretende maximizar a esperança de reforços. A equação \ref{eq:recompensas_futuras}
 apresenta esta somatória aplicada ao caso de interesse deste documento: o horizonte infinito ou tarefas
 contínuas; essa abordagem utiliza o caso de somatória infinita de recompensas futuras.
-
 \begin{equation} \label{eq:recompensas_futuras}
 	R_{t} = r_{t+1} + \gamma r_{t+2} + \gamma^{2} r_{t+3} + \ldots = \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1}.
 \end{equation}
@@ -257,7 +282,6 @@ o $\gamma$ de 1, mais o agente dá importância às recompensas futuras.
 Ao valor esperado de $R_{t}$ , para um dado $s_{t}$, dá-se o nome de \emph{valor-estado}, que diz qual
 o valor de recompensa esperado para aquele estado. A função valor-estado $V^{\pi}(s)$ (\ref{eq:valor_estado}) é quedefine este valor de recompensa esperada para cada estado do \textit{s} do ambiente seguindo a
 política $\pi$.
-
 \begin{equation} \label{eq:valor_estado}
 	V^{\pi}(s) = E_{\pi}\left \{ R_{t} | s_{t}=s \right \} = E_{\pi}\left\{ \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} \Bigg | s_{t}=s \right\}.
 \end{equation}
@@ -266,7 +290,6 @@ Como o valor-estado considera apenas a ação escolhida pela política $\pi$, e dad
 a busca pela política ótima é um processo que considera as recompensas obtidas a partir de
 ações diversas, é interessante saber qual o retorno esperado ao tomar-se uma ação específica
 \textit{a} em um estado \textit{s}, retorno este conhecido como \emph{valor-ação}. A função valor-ação $Q^{\pi}(s,a)$ é que define o valor de retorno para cada par (\textit{s},\textit{a}) seguindo a política $\pi$:
-
 \begin{equation} \label{eq:valor_acao}
 	V^{\pi}(s,a) = E_{\pi}\left \{ R_{t} | s_{t}=s, a_{t}=a \right \} = E_{\pi}\left\{ \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} \Bigg | s_{t}=s, a_{t}=a \right\}.
 \end{equation}
@@ -277,7 +300,6 @@ função valor-estado ótima $V^{*}(s)$ e da função valor-ação ótima $Q^{*}(s,a)$. 
 ao fato de que a função valor-estado nada mais é do que a função valor-ação definida sobre
 a ação que atingem o valor máximo de $Q^{*}(s,a)$ em um estado \textit{s}, ou seja, seguindo a política
 ótima:
-
 \begin{equation} \label{eq:pre_politica_otima}
 	V^{*}(s) = \underset{a \epsilon A(s)}{max} \; Q^{*}(s,a).
 \end{equation}
@@ -287,7 +309,6 @@ estado e valor-ação. A expressão matemática (\ref{eq:politica_otima}), que auxil
 definição de qual política deve ser alcançada com o aprendizado, deve então levar em
 consideração uma ação como argumento que maximize o valor-ação, ou seja, para um
 determinado estado \textit{s}, qual ação será responsável pelo retorno máximo:
-
 \begin{equation} \label{eq:politica_otima}
 	\pi^{*}(s) = \underset{a \epsilon A(s)}{arg\:max} \; Q^{*}(s,a).
 \end{equation}
@@ -372,7 +393,6 @@ atualização de seu valor-estado $V(s_{t})$ a partir da recompensa observada $r_{
 estimado de $V(s_{t+1})$ correspondente ao estado seguinte. A forma mais simples dos métodos por
 DT, conhecida como DT(0), leva em consideração não a recompensa total esperada até a meta
 final ($R_{t}$) mas sim a recompensa devida a um único passo:
-
 \begin{equation} \label{eq:dt0}
 	V(s_{t}) \leftarrow V(s_{t}) + \alpha \left [ r_{t+1} + \gamma V(s_{t+1}) - V(s_{t}) \right ].
 \end{equation}
@@ -417,15 +437,40 @@ primeiramente os valores-ação para cada par $(s,a)$ são inicializados arbitraria
 seguida, a partir de um estado inicial \textit{s} qualquer do agente a tarefa se inicia, e para cada ação
 \textit{a} escolhida os valores-ação devem ser atualizados, até o momento que um estado final é
 atingido.
-
 \begin{equation} \label{eq:q_learning}
 	Q^{*}(s_{t},a_{t}) \leftarrow Q(s_{t},a_{t}) + a \left [ r_{t+1} + \gamma \underset{a}{max} \, Q(s_{t+1},a_{t+1}) - Q(s_{t},a_{t}) \right ]
 \end{equation}
 % ESSA EQUACAO ESTÁ DE ACORDO COM A CORRECAO DO THIAGO. PRECISA-SE CONFIRMÁ-LA DEPOIS.
 
-% FALTA ADICIONAR O ALGORITMO AQUI !!!!! 
+% FALTA ADICIONAR O ALGORITMO AQUI !!!!!
+\begin{algorithm}
+\caption{Q-Learning}
+\begin{algorithmic}[1]
+	\State Inicializa $Q(s,a)$ arbitrariamente
+	\For{epsódio}{}{}
+	\EndFor
+\end{algorithmic}
+\end{algorithm}
 
-\subsubsection{On-Policy SARSA-Learning}
+\begin{algorithm}
+\caption{Exemplo do \texttt{for}} 
+\begin{algorithmic}[1]
+\For{i}{1}{n} 
+  \State {$A[i] \gets i + 1$} \Comment{Preenche o vetor} 
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Exemplo do \texttt{while}}
+\begin{algorithmic}[1]
+  \While {$i \neq n$}
+    \State $i \gets i + 1$
+  \EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{On-Policy SARSA-Learning}\label{sec:on-policy_sarsa-learning}
 
 Assim como o algoritmo Q-Learning, o algoritmo Sarsa deve aprender uma função
 valor-ação de forma semelhante ao processo realizado em predição por DT para a função
@@ -435,7 +480,7 @@ tarefa.
 \begin{figure}[!h]
     \centering
     \includegraphics[scale=0.7]{abst_valor_estado_acao}
-    \caption{Abstração utilizada para compreensão de onde exatamente encontram-se o valor-estado e o valor-ação.}
+    \caption[Abstração para o valor-estado e o valor-ação]{Abstração utilizada para compreensão de onde exatamente encontram-se o valor-estado e o valor-ação.}
     \label{fig:abst_valor_estado_acao}
 \end{figure}
 
@@ -444,7 +489,6 @@ para o algoritmo Q-Learning pois o algoritmo SARSA deve atualizar a própria polí
 segue; em outras palavras, ao invés de escolher o melhor valor futuro de $Q(s_{t+1}, a_{t+1})$, o
 algoritmo SARSA obtém $a_{t+1}$ pela política $\pi$ sendo seguida. O nome SARSA origina-se da tupla
 $(s_{t}, a_{t}, r_{t+1}, s_{t+1}, a_{t+1})$ utilizada para a atualização dos valores-ação.
-
 \begin{equation} \label{eq:sarsa}
 	Q(s_{t},a_{t}) \leftarrow Q(s_{t},a_{t}) + \alpha \left [ r_{t+1} + \gamma Q(s_{t+1},a_{t+1}) - Q(s_{t},a_{t}) \right ]
 \end{equation}
@@ -503,7 +547,7 @@ episódio. A figura \ref{fig:modelo_predicao_dt} ilustra essa ideia.
 \begin{figure}[!h]
     \centering
     \includegraphics{modelo_predicao_dt}
-    \caption{Modelo formado por estados e transições considerados em métodos por DT de 1 único
+    \caption[Modelo do método DT de 1 único passo até n]{Modelo formado por estados e transições considerados em métodos por DT de 1 único
 passo até n passos para a predição por DT \cite{sutton1998reinforcement}.}
     \label{fig:modelo_predicao_dt}
 \end{figure}
@@ -513,13 +557,11 @@ ou n passos dá-se o nome de \emph{alvo}. Para os métodos de Monte Carlo, o alvo 
 retorno final do episódio. Para os métodos por DT de 1 passo, o alvo é o retorno esperado
 considerando apenas um passo; a equação (\ref{eq:predicao_dt_1_passo}) apresenta o valor 
 de retorno esperado (\ref{eq:recompensas_futuras}) calculado em um único passo.
-
 \begin{equation} \label{eq:predicao_dt_1_passo}
 	R_{t}^{(1)} = r_{t+1} + \gamma V_{t}(s_{t+1})
 \end{equation}
 
 Esta ideia pode então ser generalizada chegando ao alvo decorrente de n passos (\ref{eq:predicao_dt_n_passo}).
-
 \begin{equation} \label{eq:predicao_dt_n_passo}
 	R_{t}^{(n)} = r_{t+1} + \gamma r_{t+2} + \gamma ^{2} + \ldots + \gamma ^{n-1} r_{t+n} + \gamma ^{n} V_{t}(s_{t+n}).
 \end{equation}
@@ -529,7 +571,6 @@ atualização dos valores-estado. A partir da configuração de n passos adotada, o 
 diferentemente da expressão utilizada para 1 passo (\ref{eq:dt0}), será incrementado utilizando $R_{t}^{(n)}$ e não mais $R_{t}^{(1)}$. A expressão (\ref{eq:incremento_valor_estado}) representa o incremento a ser realizado no valor-estado de um estado \textit{s}, sendo $\Delta V_{t}(s) = 0$ para todo $s \neq st$. Diferentemente do método de atualização on-line que ocorre na expressão (\ref{eq:dt0}), em que a atualização $V_{t+1}(s) = V_{t}(s) + \Delta V_{t}(s)$ ocorre a cada novo instante \textit{t}, a expressão (\ref{eq:incremento_valor_estado}) representa a atualização \emph{off-line} para o método de predição
 por DT de n passos; neste caso, a alteração do valor-estado do estado \textit{s} apenas será efetuado
 ao final de um episódio, sendo que o novo valor-estado, para o próximo episódio, será $V(s) + \sum_{t=0}^{T-1} \Delta V_{t}(s)$ \cite{sutton1998reinforcement}.
-
 \begin{equation} \label{eq:incremento_valor_estado}
 	\Delta V_{t}(s_{t}) = \alpha [ R_{t}^{n} - V_{t}(s_{t}) ].
 \end{equation}
@@ -541,7 +582,6 @@ passos. Por exemplo, o alvo pode ser obtido com metade do retorno de 2 passos e 
 retorno de 4 passos, como mostra a expressão (\ref{eq:media_2_4_passos}). Essa é a ideia 
 para métodos por DT($\lambda$), sendo $\lambda$ o parâmetro utilizado para ponderar a 
 participação de cada uma das configurações de n passos.
-
 \begin{equation} \label{eq:media_2_4_passos}
 	R_{t}^{avg} = \frac{1}{2} R_{t}^{2} + \frac{1}{2} R_{t}^{4}.
 \end{equation}
@@ -549,7 +589,7 @@ participação de cada uma das configurações de n passos.
 \begin{figure}[!h]
     \centering
     \includegraphics{diagrama_dt_com_pesos}
-    \caption{Diagrama de métodos por DT($\lambda$) com atribuição de pesos a cada estrutura de n passos.}
+    \caption[Diagrama de métodos por DT($\lambda$) com atribuição de pesos]{Diagrama de métodos por DT($\lambda$) com atribuição de pesos a cada estrutura de n passos.}
     \label{fig:diagrama_dt_com_pesos}
 \end{figure}
 
@@ -563,13 +603,11 @@ o agente atinge o estado terminal. Por esta expressão entende-se que o parâmetro
 $\lambda$ aproxima a predição por DT dos métodos de Monte Carlo à medida que $\lambda$ se 
 aproxima de 1; se $\lambda = 1$, o retorno $\lambda$ é idêntico ao retorno obtido 
 considerando-se todos os passos de um episódio.
-
 \begin{equation} \label{eq:retorno_lambda}
 	R_{t}^{\lambda} = (1 - \lambda) \sum_{n=1}^{T-t-1} \lambda^{n-1} R_{t}^{(n)} + \lambda^{T-t-1} R_{t}.
 \end{equation}
 
-Dado esse novo conceito de retorno ?, a equação (\ref{eq:incremento_valor_estado}), que representa a atualização dos valores-estado, pode ser alterada para a expressão (\ref{eq:incremento_valor_estado_lambda}) que considera a média de retornos ao invés de um número específico n de passos.
-
+Dado esse novo conceito de retorno $\lambda$, a equação (\ref{eq:incremento_valor_estado}), que representa a atualização dos valores-estado, pode ser alterada para a expressão (\ref{eq:incremento_valor_estado_lambda}) que considera a média de retornos ao invés de um número específico n de passos.
 \begin{equation} \label{eq:incremento_valor_estado_lambda}
 	\Delta V_{t}(s_{t}) = \alpha [ R_{t}^{\lambda} - V_{t}(s_{t}) ].
 \end{equation}
@@ -585,7 +623,7 @@ aqui apresentada de como o agente observa o ambiente e eventos futuros \cite{sut
 \begin{figure}[!h]
     \centering
     \includegraphics{visao_adiante}
-    \caption{Ilustração de como funciona a visão adiante -- o agente deve olhar apenas o panorama
+    \caption[Ilustração de como funciona a visão adiante]{Ilustração de como funciona a visão adiante -- o agente deve olhar apenas o panorama
 futuro para suas considerações atuais.}
     \label{fig:visao_adiante}
 \end{figure}
@@ -599,7 +637,6 @@ introduzido na seção \ref{sec:traco_elegibilidade}. O traço de elegibilidade par
 estado \textit{s} em um instante \textit{t} é denotado por $e_{t}(s)$. Conforme mencionado 
 na seção \ref{sec:traco_elegibilidade}, o traço de elegibilidade define indiretamente quanto 
 um valor-estado ou valor-ação deve ser incrementado após a análise por DT.
-
 \begin{equation}\label{eq:traco_elegibilidade}
 e_{t}(s) = 
 \left\{ 
@@ -623,8 +660,7 @@ são modificados em menor escala, pois seu traço de elegibilidade é menor. Dizemo
 \begin{figure}[!h]
     \centering
     \includegraphics{grafico_elegibilidade}
-    \caption{Gráfico explicativo sobre como o valor do traço de elegibilidade varia caso ocorram visitas a
-um mesmo estado.}
+    \caption[Gráfico do traço de elegibilidade]{Gráfico explicativo sobre como o valor do traço de elegibilidade varia caso ocorram visitas aum mesmo estado.}
     \label{fig:grafico_elegibilidade}
 \end{figure}
 
@@ -634,7 +670,6 @@ das estruturas de n passos para a atualização do valor-estado. Para a visão retr
 adicionamos o traço de elegibilidade ao cálculo do incremento do valor-estado. As equações
 (\ref{eq:incremento_valor_estado_elegib_parcial}) e (\ref{eq:incremento_valor_estado_elegibilidade}) mostram como, a cada passo, todos os estados recentemente visitados devem
 ter seu respectivo valor-estado alterado em $\Delta V_{t}$.
-
 \begin{equation} \label{eq:incremento_valor_estado_elegib_parcial}
 	\delta _{t} = r_{t+1} + \gamma V_{t}(s_{t+1}) - V_{t}(s_{t}) = R_{t}^{(1)} - V_{t}(s_{t}).
 \end{equation}
@@ -652,8 +687,7 @@ ilustra como o agente se comunica com os estados já visitados para atualização d
 \begin{figure}[!h]
     \centering
     \includegraphics{visao_retrograda}
-    \caption{Ilustração de como funciona a visão retrógrada de métodos por DT -- o agente deve passar
-aos estados anteriores a sua situação atual.}
+    \caption[Ilustração da visão retrógrada de métodos por DT]{Ilustração de como funciona a visão retrógrada de métodos por DT -- o agente deve passar aos estados anteriores a sua situação atual.}
     \label{fig:visao_retrograda}
 \end{figure}
 
@@ -664,9 +698,52 @@ métodos por DT($\lambda$), ou seja, como atualizar valores-ação de forma a ating
 
 \subsection{SARSA($\lambda$)}
 
-Conforme apresentado na seção \ldots \\
-\vdots
+Conforme apresentado na seção \ref{sec:on-policy_sarsa-learning}, o algoritmo SARSA é um método que
+soluciona o problema de controle em métodos por DT; esta versão que foi apresentada é
+destinada à análise a partir de um único passo. À versão do algoritmo SARSA que utiliza o traço
+de elegibilidade como forma de aproximar os métodos por DT dos métodos de Monte Carlo
+dá-se o nome de SARSA($\lambda$).
 
+A ideia é estender o procedimento adotado pelo problema de predição por DT($\lambda$), que
+se preocupava com a atualização dos valores-estado, até os pares estado-ação (valores-ação).
+Dessa forma, o par estado-ação é que terá a ele associado um valor de traço de elegibilidade
+denotado por $e_{t}(s,a)$. As equações (\ref{eq:sl_incremento_valor_estado_acao}) e 
+(\ref{eq:sl_incremento_valor_acao}) se assemelham muito às equações 
+(\ref{eq:incremento_valor_estado_elegib_parcial}) e (\ref{eq:incremento_valor_estado_elegibilidade}), 
+diferenciando-se apenas pela substituição necessária de valores-estado por valores-
+ação e troca do traço de elegibilidade referente ao estado pelo traço referente ao par estado-
+ação (s,a).
+\begin{equation} \label{eq:sl_incremento_valor_acao}
+	Q_{t+1}(s,a) = Q_{t}(s,a) + \alpha \delta _{t} e_{t}(s,a).
+\end{equation}
+
+\begin{equation} \label{eq:sl_incremento_valor_estado_acao}
+	\delta _{t} = r_{t+1} + \gamma Q_{t}(s_{t+1},a_{t+1}) - Q_{t}(s_{t},a_{t}).
+\end{equation}
+
+\begin{equation}\label{eq:sl_traco_elegibilidade}
+e_{t}(s,a) = 
+\left\{ 
+  \begin{array}{l l}
+	\gamma \lambda e_{t-1}(s,a)+1 	& \text{se }s = s_{t} \text{ e } a = a_{t};\\ 
+	\gamma \lambda e_{t-1}(s,a) 		& \text{Caso contrário}.
+  \end{array}
+\right.
+\end{equation}
+
+
+O algoritmo SARSA($\lambda$) busca alcançar a função valor-ação $Q^{*}(s,a)$ ótima a partir de
+atualizações sucessivas de $Q^{\pi}(s,a)$, portanto seguindo uma política $\pi$. Antes do início de um
+episódio, os valores de $Q(s,a)$ para cada par estado-ação conhecido podem ser definidos
+aleatoriamente, enquanto que os valores de $e_{t}(s,a)$ devem ser iniciados com 0 dado que
+nenhum estado foi visitado até então. Para que um episódio seja iniciado um par (s,a) deve
+ser apontado, ou seja, um estado inicial deve ser escolhido e uma ação a, definida pela política
+seguida, deve ser tomada. Em seguida, a partir desta ação o agente deve identificar o reforço
+recebido, o novo estado e a próxima ação. O algoritmo (2)[!!!!! LABEL PRO ALGORITMO !!!!!] apresenta o processo iterativo que
+deve ser realizado para atualizado dos valores de $Q(s,a)$ a cada passo de um episódio, a partir
+dos valores apresentados.
+
+%ALGORITMO AQUI !!!!!
 
 \chapter{CMAC}
 
@@ -748,8 +825,7 @@ como mostra a Figura \ref{fig:turtlesim}.
 \begin{figure}[!h]
     \centering
     \includegraphics{turtlesim}
-    \caption{Simulador TurtleSim sendo executado. Aqui o rono está fazendo uma rota circular, assim
-como no trajeto desenhado.}
+    \caption[Simulador Turtlesim sendo executado]{Simulador TurtleSim sendo executado. Aqui o rono está fazendo uma rota circular, assim como no trajeto desenhado.}
     \label{fig:turtlesim}
 \end{figure}
 
@@ -811,8 +887,7 @@ aprendizagem.
 \begin{figure}[!h]
     \centering
     \includegraphics{pioneer_2dx}
-    \caption{Sistema robótico a ser utilizado neste projeto (Pioneer 2DX) -- neste exemplo o robô já
-possui uma câmera auxiliar e podemos visualizar os sensores acoplados ao robô.}
+    \caption[Sistema robótico a ser utilizado neste projeto (Pioneer 2DX)]{Sistema robótico a ser utilizado neste projeto (Pioneer 2DX) -- neste exemplo o robô já possui uma câmera auxiliar e podemos visualizar os sensores acoplados ao robô.}
     \label{fig:pioneer_2dx}
 \end{figure}
 
