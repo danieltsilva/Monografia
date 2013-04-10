@@ -13,6 +13,7 @@
 \usepackage{url}
 \usepackage{txfonts}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage{float}
 \usepackage{algpseudocode,algorithm}
 
@@ -147,11 +148,41 @@ with a set of algorithms for the solution of the problem of reinforcement learni
 
 \begin{listofabbrv}{1000}
 \item [USP] Universidade de São Paulo
+\item [PDM] Processos de Decisão de Markov
+\item [DT] Diferença Temporal
+\item [SARSA] State-Action-Reward-State-Action
+\item [CMAC] Cerebelaar Model Articulation Controller
+\item [ROS] Robot Operating System
+\item [RFID] Radio-Frequency IDentification
 %\item [CFS] Courtois-Finiasz-Sendrier
 \end{listofabbrv}
 
 \begin{listofsymbols}{1000}
-\item [$\Delta(h)$] Assinatura diádica
+%Aprendizagem por Reforco
+\item [s] Estado
+\item [a] Ação
+\item [$\pi$] Política de tomada de ação
+\item [r] Recompensa recebida pelo agente durante o passo executado
+\item [$\gamma$] Fator de desconto
+\item [$V^{\pi}(s)$] Função valor-estado
+\item [$V^{*}(s)$] Função valor-estado ótima
+\item [$V^{*}(s)$] Função valor-estado ótima
+\item [$Q^{\pi}(s)$] Função valor-ação
+\item [$Q^{*}(s)$] Função valor-ação ótima
+\item [$\lambda$] Retorno, parâmetro utilizado para ponderar a participação de cada uma das configurações de n passos
+%CMAC
+\item [$s_{i}$] Entrada de índice i para o CMAC
+\item [$\varepsilon$] Precisão, tamanho de cada ladrilho
+\item [$Q_{i}$] Índice dos hipercubos
+\item [$I_{ij}$] Intervalo de subdivisão de cada fibra, onde o índice \textit{i} corresponde à entrada e o índice \textit{j} corresponde à fibra
+\item [$Q$] Distância entre fibras mucosas
+\item [$act_{ij}$] Função ativo para cada célula da tabela de valores
+\item [$\sigma$] Variância
+\item [$a_{min}$] Limite de corte para valores próximos do centro da curva gaussiana
+\item [$a_{v}$] Valor da célula
+\item [$p$] Valor da saída, considerando as células da tabela de memória ativas com seus pesos
+\item [$w_{v}$] Peso da célula ativa $a_{v}$
+
 \end{listofsymbols}
 
 \chapter{Introdução}\label{chp:intro}
@@ -280,7 +311,7 @@ de recompensas futuras no aprendizado do agente. Sendo $0 \leq \gamma \leq 1$, q
 o $\gamma$ de 1, mais o agente dá importância às recompensas futuras.
 
 Ao valor esperado de $R_{t}$ , para um dado $s_{t}$, dá-se o nome de \emph{valor-estado}, que diz qual
-o valor de recompensa esperado para aquele estado. A função valor-estado $V^{\pi}(s)$ (\ref{eq:valor_estado}) é quedefine este valor de recompensa esperada para cada estado do \textit{s} do ambiente seguindo a
+o valor de recompensa esperado para aquele estado. A função valor-estado $V^{\pi}(s)$ (\ref{eq:valor_estado}) é que define este valor de recompensa esperada para cada estado do \textit{s} do ambiente seguindo a
 política $\pi$.
 \begin{equation} \label{eq:valor_estado}
 	V^{\pi}(s) = E_{\pi}\left \{ R_{t} | s_{t}=s \right \} = E_{\pi}\left\{ \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} \Bigg | s_{t}=s \right\}.
@@ -301,7 +332,7 @@ ao fato de que a função valor-estado nada mais é do que a função valor-ação defi
 a ação que atingem o valor máximo de $Q^{*}(s,a)$ em um estado \textit{s}, ou seja, seguindo a política
 ótima:
 \begin{equation} \label{eq:pre_politica_otima}
-	V^{*}(s) = \underset{a \epsilon A(s)}{max} \; Q^{*}(s,a).
+	V^{*}(s) = \underset{a \in A(s)}{max} \; Q^{*}(s,a).
 \end{equation}
 
 Para que a política ótima $\pi^{*}(s)$ seja obtida devemos então obter os maiores valor-
@@ -310,7 +341,7 @@ definição de qual política deve ser alcançada com o aprendizado, deve então leva
 consideração uma ação como argumento que maximize o valor-ação, ou seja, para um
 determinado estado \textit{s}, qual ação será responsável pelo retorno máximo:
 \begin{equation} \label{eq:politica_otima}
-	\pi^{*}(s) = \underset{a \epsilon A(s)}{arg\:max} \; Q^{*}(s,a).
+	\pi^{*}(s) = \underset{a \in A(s)}{arg\:max} \; Q^{*}(s,a).
 \end{equation}
 
 Este artigo considera problemas onde as ações podem ter consequências
@@ -441,34 +472,23 @@ atingido.
 	Q^{*}(s_{t},a_{t}) \leftarrow Q(s_{t},a_{t}) + a \left [ r_{t+1} + \gamma \underset{a}{max} \, Q(s_{t+1},a_{t+1}) - Q(s_{t},a_{t}) \right ]
 \end{equation}
 % ESSA EQUACAO ESTÁ DE ACORDO COM A CORRECAO DO THIAGO. PRECISA-SE CONFIRMÁ-LA DEPOIS.
-
-% FALTA ADICIONAR O ALGORITMO AQUI !!!!!
 \begin{algorithm}
 \caption{Q-Learning}
+\label{alg:q_learning}
 \begin{algorithmic}[1]
 	\State Inicializa $Q(s,a)$ arbitrariamente
-	\For{epsódio}{}{}
+	\For{cada episódio}{}{}
+		\State Inicializa $s$
+		\For{cada passo do episódio}{}{\ até $s$ ser terminal}
+			\State Escolha $a$ de $s$ usando a política derivada de $Q$ (e.g., $\varepsilon$-gananciosa)
+			\State Toma ação $a$, observe $r$, $s'$
+			\State $Q(s,a) \leftarrow Q(s,a) + \alpha [r + \gamma max_{a'} Q(s',a') - Q(s,a)]$
+			\State $s \leftarrow s'$
+		\EndFor
 	\EndFor
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
-\caption{Exemplo do \texttt{for}} 
-\begin{algorithmic}[1]
-\For{i}{1}{n} 
-  \State {$A[i] \gets i + 1$} \Comment{Preenche o vetor} 
-\EndFor
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
-\caption{Exemplo do \texttt{while}}
-\begin{algorithmic}[1]
-  \While {$i \neq n$}
-    \State $i \gets i + 1$
-  \EndWhile
-\end{algorithmic}
-\end{algorithm}
 
 \subsubsection{On-Policy SARSA-Learning}\label{sec:on-policy_sarsa-learning}
 
@@ -492,8 +512,22 @@ $(s_{t}, a_{t}, r_{t+1}, s_{t+1}, a_{t+1})$ utilizada para a atualização dos val
 \begin{equation} \label{eq:sarsa}
 	Q(s_{t},a_{t}) \leftarrow Q(s_{t},a_{t}) + \alpha \left [ r_{t+1} + \gamma Q(s_{t+1},a_{t+1}) - Q(s_{t},a_{t}) \right ]
 \end{equation}
-
-% FALTA ADICIONAR O ALGORITMO AQUI !!!!! 
+\begin{algorithm}
+\caption{SARSA}
+\label{alg:sarsa}
+\begin{algorithmic}[1]
+	\State Inicializa $Q(s,a)$ arbitrariamente
+	\For{cada episódio}{}{}
+		\State Inicializa $s$
+		\For{cada passo do episódio}{}{\ até $s$ ser terminal}
+			\State Toma ação $a$, observe $r$, $s'$
+			\State Escolha $a'$ de $s'$ usando a política derivada de $Q$ (e.g., $\varepsilon$-gananciosa)
+			\State $Q(s,a) \leftarrow Q(s,a) + \alpha [r + \gamma Q(s',a') - Q(s,a)]$
+			\State $s \leftarrow s'; a \leftarrow a'$
+		\EndFor
+	\EndFor
+\end{algorithmic}
+\end{algorithm}
 
 Pelo conteúdo apresentado sobre o algoritmo SARSA, quando o agente chega a um
 estado com uma determinada recompensa, o único valor-ação $Q(s,a)$ que é atualizado é o
@@ -563,7 +597,7 @@ de retorno esperado (\ref{eq:recompensas_futuras}) calculado em um único passo.
 
 Esta ideia pode então ser generalizada chegando ao alvo decorrente de n passos (\ref{eq:predicao_dt_n_passo}).
 \begin{equation} \label{eq:predicao_dt_n_passo}
-	R_{t}^{(n)} = r_{t+1} + \gamma r_{t+2} + \gamma ^{2} + \ldots + \gamma ^{n-1} r_{t+n} + \gamma ^{n} V_{t}(s_{t+n}).
+	R_{t}^{(n)} = r_{t+1} + \gamma r_{t+2} + \gamma ^{2} r_{t+3} + \ldots + \gamma ^{n-1} r_{t+n} + \gamma ^{n} V_{t}(s_{t+n}).
 \end{equation}
 
 Para conclusão da predição por DT de n passos, o alvo agora deve ser incluído na
@@ -739,15 +773,139 @@ aleatoriamente, enquanto que os valores de $e_{t}(s,a)$ devem ser iniciados com 
 nenhum estado foi visitado até então. Para que um episódio seja iniciado um par (s,a) deve
 ser apontado, ou seja, um estado inicial deve ser escolhido e uma ação a, definida pela política
 seguida, deve ser tomada. Em seguida, a partir desta ação o agente deve identificar o reforço
-recebido, o novo estado e a próxima ação. O algoritmo (2)[!!!!! LABEL PRO ALGORITMO !!!!!] apresenta o processo iterativo que
+recebido, o novo estado e a próxima ação. O algoritmo (\ref{alg:sarsa_lambda}) apresenta o processo iterativo que
 deve ser realizado para atualizado dos valores de $Q(s,a)$ a cada passo de um episódio, a partir
 dos valores apresentados.
 
-%ALGORITMO AQUI !!!!!
+\begin{algorithm}
+\caption{SARSA-$\lambda$}
+\label{alg:sarsa_lambda}
+\begin{algorithmic}[1]
+	\State Inicializa $Q(s,a)$ arbitrariamente
+	\For{cada episódio}{}{}
+		\State Inicializa $s$, $a$
+		\For{cada passo do episódio}{}{\ até $s$ ser terminal}
+			\State Toma ação $a$, observe $r$, $s'$
+			\State Escolha $a'$ de $s'$ usando a política derivada de $Q$ (e.g., $\varepsilon$-gananciosa)
+			\State $\delta \leftarrow r + \gamma Q(s',a') - Q(s,a)$
+			\State $e(s,a) \leftarrow e(s,a) + 1$
+			\For{todo $s,a$}{}{}
+				\State $Q(s,a) \leftarrow Q(s,a) + \alpha \delta e(s,a)$
+				\State $e(s,a) \leftarrow \gamma \lambda e(s,a)$
+			\EndFor
+			\State $s \leftarrow s'; a \leftarrow a'$
+		\EndFor
+		
+	\EndFor
+\end{algorithmic}
+\end{algorithm}
 
 \chapter{CMAC}
 
-\vdots
+Com a evolução das tecnologias voltadas ao estudo biológico, e
+principalmente do sistema nervoso, houve uma grande compreensão recente
+do cerebelo humano. Baseado nesses estudos, foi baseado um modelo de
+processamento de dados relativamente simples (primeiramente desenvolvida
+por Albus em 1971), porém com ótima capacidade de processamento. Tal
+modelo é muito utilizado na área de Inteligência Artificial e até em alguns
+trabalhos tratando com Aprendizado por Reforço, servindo como método
+para discretização de funções contínuas - como as informações são
+encontradas em ambientes reais. Tal modelo é conhecido como CMAC (Cerebellar 
+Model Articulation Controller) e se baseia em um mapa de
+ladrilhos, montados a partir da tradução das informações de entrada
+em "fibras mucosas", e em seguida em "células granulares", seguindo o
+modelo de cerebelo biológico.
+Uma das razões para o uso de redes neurais para problemas com
+Aprendizado por Reforço é sua capacidade de generalização em situações e
+ações semelhantes. A generalização é consequência de, ao se ir para algum
+estado da matriz de valores de acordo com a entrada s, na verdade
+selecionamos um hipercubo com com os ladrilhos (e seus respectivos
+valores) que o cercam, "suavizando" a tomada de ação.
+
+\section{Associação no CMAC}
+
+As entradas si pertencentes ao espaço S são normalmente
+multidimensionais, sendo cada $s_{i}$ pertencente no intervalo $[\underset{min}{s_{i}}, \underset{max}{s_{i}}]$ discretizada com uma precisão $\varepsilon$ a ser definida (normalmente essa
+informação tem origem empírica) e depois cada entrada $s_{i}$ é mapeadas por Q
+hipercubos diferentes. Cada hipercubo se situa frente ao outro, como mostra
+a figura \ref{fig:disposicao_hipercubos}. Dessa forma mapeamos todas as entradas $s_{i}$ nesses Q
+hipercubos.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.7]{disposicao_hipercubos}
+    \caption{Exemplo da disposição de hipercubos. Com 2 entradas e Q=50.}
+    \label{fig:disposicao_hipercubos}
+\end{figure}
+
+Cada ladrilho contém o peso correspondente da entrada si no hipercubo Qi
+(peso sináptico), sendo que o valor total referente a tal entrada é a soma
+dos pesos de cada hipercubo associado a essa entrada, como exemplifica a
+figura \ref{fig:visao_cima_hipercubos}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.6]{visao_cima_hipercubos}
+    \caption[Visão de ``cima'' dos hipercubos]{Visão de ``cima'' dos hipercubos ($Q=3$), para o caso de uma variável unidirecional de entrada, onde cada ladrilho ativo pela entrada está mapeado em uma tabela de memória com seu peso.}
+    \label{fig:visao_cima_hipercubos}
+\end{figure}
+
+\section{Modelo geral para CMAC}
+
+\subsection{Mapeando entradas (pertencentes a S) em fibras mucosas (pertencentes a M)}
+
+Cada entrada $s^{i}$ é codificada no conjunto M de fibras, onde cada fibra é
+dividida em intervalos $I_{ij}$, onde \textit{i} é o índice da entrada e \textit{j} o índice da fibra. Dá-se
+o intervalo $I_{ij} = [j^{*}\varepsilon - Q^{*}\varepsilon ; j^{*} \varepsilon ]$, onde Q é a 
+distância entre as fibras (distância entre os hipercubos). Já que cada intervalo $I_{ij}$, $I_{ij+1}$ estão
+deslocados de $\varepsilon$ e a distância dos intervalos é $Q^{*}\varepsilon$, cada si estará
+contido em exatos \textit{Q} intervalos consecutivos, e a função de ativação da fibra será
+dada como:
+\begin{equation}
+act_{ij}(s_{i}) := 
+\left\{ 
+  \begin{array}{l l}
+	1 	& \text{se }s_{i} \in I_{ij};\\ 
+	0	& \text{caso contrário}.
+  \end{array}
+\right.
+\end{equation}
+
+Cada entrada $s_{i}$ será codificada como o conjunto de fibras \textit{j} pertence a M com
+$act_{ij} = 1$. Para se aproveitar a função de generalização, podemos alterar a função
+\textit{act} para utilizar uma curva gaussiana que reflete seu resultado para células
+vizinhas:
+\begin{equation}
+act_{ij}(s_{i}) := 
+\left\{ 
+  \begin{array}{l l}
+	gauss_{ij}(s_{i}) 	& \text{se }gauss_{ij}(s_{i}) \geq a_{min};\\ 
+	0	& \text{caso contrário}.
+  \end{array}
+\right.
+\end{equation}
+
+$$
+\textit{Com } \ gauss_{ij}(s_{i}) = exp \, \Bigg ( -\frac{1}{2} \bigg ( \frac{s_{i}-\mu _{ij}}{\sigma _{ij}} \bigg ) ^{2} \Bigg ).
+$$
+
+Onde sigma e amin devem ser satisfatoriamente escolhidos e miij é designado o
+centro do intervalo $I_{ij}$.
+
+\subsection{Mapeando fibras (pertencentes a M) em células (pertencentes a A)}
+
+Cada célula \textit{v} é designada unicamente pela tupla de números \textit{ji}, onde \textit{j} é a fibra
+mucosa na dimensão \textit{i}. A ativação $a_{v}$ da célula \textit{v} é dada como o produto de
+ativações das fibras referentes à célula:
+\begin{equation}
+a_{v} = act_{v} (\vec{s}) \ := \ \prod_{i=1}^{n} act_{ij_{i}} (s_{i}) = 
+\left\{ 
+  \begin{array}{l l}
+	1 	& \text{se }\vec{s} \in I_{1j_{1}} \times \ldots \times I_{nj_{n}};\\ 
+	0	& \text{caso contrário}.
+  \end{array}
+\right.
+\end{equation}
 
 
 \chapter{Navegação robótica}
@@ -798,25 +956,43 @@ que os algoritmos de aprendizado por reforço são aplicados.
 
 As mensagens e servidores são descritos em arquivos de texto simples, como dito
 anteriormente. No caso dos arquivos de mensagens, são arquivos que descrevem os campos
-de uma mensagem no ROS (Figura XXX). Os arquivos de servidores não são tão diferentes
+de uma mensagem no ROS (figura \ref{fig:def_msg}). Os arquivos de servidores não são tão diferentes
 dos de mensagens, a diferença básica é que são divididos em parâmetros de resquest e
 parâmetros de response, mas também tem como finalidade a descrição dos campos do ROS
-para comunicação (Figura XXX).
+para comunicação (figura \ref{fig:def_srv}).
 
-%FIGURAS DAS MENSAGENS E SERVIDORES
+\begin{figure}[!h]
+\centering
+\subfloat[Mensagem]{
+\includegraphics[scale=0.75]{msg}
+\label{fig:def_msg}
+}
+\quad %espaco separador
+\subfloat[Servidor]{
+\includegraphics[scale=0.75]{srv}
+\label{fig:def_srv}
+}
+\caption{Descrição dos campos para comunicação}
+\label{fig:def}
+\end{figure}
 
 \subsection{Scripts}
 
 A criação de scripts pode ser feitas tanto em Python quanto em C++, usando os
 pacotes rospy e roscpp respectivamente. Essa é uma poderosa funcionalidade, já que nos
 possibilita a criação de programas bem estruturados manuseando as propriedades dos robôs.
-O exemplo mostrado na Figura XXX mostra um trecho de um código em C++ que movimenta
+O exemplo mostrado na figura \ref{fig:script_teste} mostra um trecho de um código em C++ que movimenta
 o robô através da publicação de uma mensagem. Basicamente é importada as bibliotecas
 básicas do ROS, o programa principal as usa para criar nós (terminais para manuseio do ROS),
 criar as mensagens enviadas para o robô, handlers para publicação da mensagem no nó, entre
 outros detalhes de parametrização, como a taxa que as mensagens serão publicadas.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.80]{script_teste}
+    \caption{Script de envio de mensagem para um nó.}
+    \label{fig:script_teste}
+\end{figure}
 
-%EXEMPLO DE SCRIPT
 
 Todo código feito tem que ser declarado para ser tratado como executável, assim após
 a compilação poderemos rodar o simulador sob o comportamento programado no código,
@@ -824,7 +1000,7 @@ como mostra a Figura \ref{fig:turtlesim}.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics{turtlesim}
+    \includegraphics[scale=0.80]{turtlesim}
     \caption[Simulador Turtlesim sendo executado]{Simulador TurtleSim sendo executado. Aqui o rono está fazendo uma rota circular, assim como no trajeto desenhado.}
     \label{fig:turtlesim}
 \end{figure}

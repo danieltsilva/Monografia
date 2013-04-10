@@ -3,28 +3,32 @@
 \contentsline {chapter}{Lista de Tabelas}{}{chapter.0}
 \contentsline {chapter}{Lista de Abreviaturas e Siglas}{}{chapter.0}
 \contentsline {chapter}{Lista de Símbolos}{}{chapter.0}
-\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{11}{chapter.1}
-\contentsline {chapter}{\numberline {2}Aprendizado por Refor\c co}{13}{chapter.2}
-\contentsline {section}{\numberline {2.1}Processos de Decis\~ao de Markov}{15}{section.2.1}
-\contentsline {section}{\numberline {2.2}Pol\IeC {\'\i }tica \'otima}{15}{section.2.2}
-\contentsline {section}{\numberline {2.3}M\'etodo de solu\c c\~ao}{18}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Programa\c c\~ao din\^amica}{18}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}M\'etodos de Monte Carlo}{18}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Aprendizado por diferen\c ca temporal}{19}{subsection.2.3.3}
-\contentsline {subsubsection}{\numberline {2.3.3.1}Predi\c c\~ao DT}{20}{subsubsection.2.3.3.1}
-\contentsline {subsubsection}{\numberline {2.3.3.2}Off-Policy e Q-Learning}{21}{subsubsection.2.3.3.2}
-\contentsline {subsubsection}{\numberline {2.3.3.3}On-Policy SARSA-Learning}{22}{subsubsection.2.3.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Tra\c cos de elegibilidade}{23}{subsection.2.3.4}
-\contentsline {subsubsection}{\numberline {2.3.4.1}Predi\c c\~ao por DT de n passos}{24}{subsubsection.2.3.4.1}
-\contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao diante de DT($\lambda $)}{26}{subsubsection.2.3.4.2}
-\contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de DT($\lambda $)}{28}{subsubsection.2.3.4.3}
-\contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{30}{subsection.2.3.5}
-\contentsline {chapter}{\numberline {3}CMAC}{32}{chapter.3}
-\contentsline {chapter}{\numberline {4}Navega\c c\~ao rob\'otica}{33}{chapter.4}
-\contentsline {section}{\numberline {4.1}ROS}{33}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Mensagens e servidores}{34}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Scripts}{35}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Defini\c c\~ao de estados}{35}{section.4.2}
-\contentsline {section}{\numberline {4.3}Arquitetura}{37}{section.4.3}
-\contentsline {chapter}{\numberline {5}Proposta}{39}{chapter.5}
-\contentsline {chapter}{Refer\^encias}{42}{chapter.5}
+\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{12}{chapter.1}
+\contentsline {chapter}{\numberline {2}Aprendizado por Refor\c co}{14}{chapter.2}
+\contentsline {section}{\numberline {2.1}Processos de Decis\~ao de Markov}{16}{section.2.1}
+\contentsline {section}{\numberline {2.2}Pol\IeC {\'\i }tica \'otima}{16}{section.2.2}
+\contentsline {section}{\numberline {2.3}M\'etodo de solu\c c\~ao}{19}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Programa\c c\~ao din\^amica}{19}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}M\'etodos de Monte Carlo}{19}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Aprendizado por diferen\c ca temporal}{20}{subsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.3.1}Predi\c c\~ao DT}{21}{subsubsection.2.3.3.1}
+\contentsline {subsubsection}{\numberline {2.3.3.2}Off-Policy e Q-Learning}{22}{subsubsection.2.3.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3.3}On-Policy SARSA-Learning}{23}{subsubsection.2.3.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Tra\c cos de elegibilidade}{25}{subsection.2.3.4}
+\contentsline {subsubsection}{\numberline {2.3.4.1}Predi\c c\~ao por DT de n passos}{26}{subsubsection.2.3.4.1}
+\contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao diante de DT($\lambda $)}{27}{subsubsection.2.3.4.2}
+\contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de DT($\lambda $)}{29}{subsubsection.2.3.4.3}
+\contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{32}{subsection.2.3.5}
+\contentsline {chapter}{\numberline {3}CMAC}{34}{chapter.3}
+\contentsline {section}{\numberline {3.1}Associa\c c\~ao no CMAC}{35}{section.3.1}
+\contentsline {section}{\numberline {3.2}Modelo geral para CMAC}{36}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Mapeando entradas (pertencentes a S) em fibras mucosas (pertencentes a M)}{36}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Mapeando fibras (pertencentes a M) em c\'elulas (pertencentes a A)}{37}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Navega\c c\~ao rob\'otica}{38}{chapter.4}
+\contentsline {section}{\numberline {4.1}ROS}{38}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Mensagens e servidores}{39}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Scripts}{40}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Defini\c c\~ao de estados}{40}{section.4.2}
+\contentsline {section}{\numberline {4.3}Arquitetura}{43}{section.4.3}
+\contentsline {chapter}{\numberline {5}Proposta}{45}{chapter.5}
+\contentsline {chapter}{Refer\^encias}{48}{chapter.5}
