@@ -19,16 +19,18 @@
 \contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao adiante de TD($\lambda $)}{27}{subsubsection.2.3.4.2}
 \contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de TD($\lambda $)}{29}{subsubsection.2.3.4.3}
 \contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{31}{subsection.2.3.5}
-\contentsline {chapter}{\numberline {3}CMAC}{34}{chapter.3}
-\contentsline {section}{\numberline {3.1}Associa\c c\~ao no CMAC}{35}{section.3.1}
-\contentsline {section}{\numberline {3.2}Modelo geral para CMAC}{36}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Mapeando entradas (pertencentes a S) em fibras mucosas (pertencentes a M)}{36}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Mapeando fibras (pertencentes a M) em c\'elulas (pertencentes a A)}{37}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Navega\c c\~ao rob\'otica}{38}{chapter.4}
-\contentsline {section}{\numberline {4.1}ROS}{38}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Mensagens e servidores}{39}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Scripts}{40}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Defini\c c\~ao de estados}{40}{section.4.2}
-\contentsline {section}{\numberline {4.3}Arquitetura}{43}{section.4.3}
-\contentsline {chapter}{\numberline {5}Proposta}{45}{chapter.5}
-\contentsline {chapter}{Refer\^encias}{48}{chapter.5}
+\contentsline {chapter}{\numberline {3}Discretiza\c c\~ao de Estados Cont\IeC {\'\i }nuos}{34}{chapter.3}
+\contentsline {section}{\numberline {3.1}CMAC}{35}{section.3.1}
+\contentsline {section}{\numberline {3.2}Associa\c c\~ao no CMAC}{35}{section.3.2}
+\contentsline {section}{\numberline {3.3}Modelo geral para CMAC}{36}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Mapeando entradas (pertencentes a S) em fibras mucosas (pertencentes a M)}{37}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Mapeando fibras (pertencentes a M) em c\'elulas (pertencentes a A)}{38}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Mapeando c\'elulas (pertencentes a A) em sa\IeC {\'\i }das (pertencentes a R)}{38}{subsection.3.3.3}
+\contentsline {chapter}{\numberline {4}Navega\c c\~ao rob\'otica}{39}{chapter.4}
+\contentsline {section}{\numberline {4.1}ROS}{39}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Mensagens e servidores}{40}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Scripts}{41}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Defini\c c\~ao de estados}{41}{section.4.2}
+\contentsline {section}{\numberline {4.3}Arquitetura}{44}{section.4.3}
+\contentsline {chapter}{\numberline {5}Proposta}{46}{chapter.5}
+\contentsline {chapter}{Refer\^encias}{49}{chapter.5}

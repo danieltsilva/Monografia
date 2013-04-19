@@ -799,7 +799,30 @@ dos valores apresentados.
 \end{algorithmic}
 \end{algorithm}
 
-\chapter{CMAC}
+\chapter{Discretização de Estados Contínuos}
+
+Definido já qual o método usado para o aprendizado, outro problema que
+deve ser contornado aparece pois o método do SARSA($\lambda$) trabalha com
+estados definidos (discretos), mas o robô atua em um domínio contínuo, de
+estados contínuos. Por esse motivo é necessário utilizar um método para a
+discretização destes estados através de uma função de aproximação. Tal função
+de aproximação deve ser capaz de prover generalização, ou seja, ela deve
+estimar o valor Q de estados mesmo sem nunca ter passado por esses estados,
+com informações apenas dos estados já visitados. Além disso, deve-se definir a
+precisão da discretização, pois com uma granularidade muito baixa, é diminuída
+a eficiência da função de aproximação, mas em contrapartida, se ela for muito
+alta, será usado muito recurso de memória. É usado neste trabalho como função
+de aproximação o CMAC (\textit{Cerebellar Model Articulation Controller}) que se baseia
+em um mapa de reticulados, montados a partir da tradução das informações de
+entrada em "?bras mucosas", e em seguida em "células granulares", seguindo o
+modelo de cerebelo biológico. Uma das razões para o uso de redes neurais para
+problemas com Aprendizado por Reforço é sua capacidade de generalização
+em situações e ações semelhantes. A generalização é consequência de, ao se ir
+para algum estado da matriz de valores de acordo com a entrada s, na verdade
+selecionamos um hipercubo com os reticulados (e seus respectivos valores) que
+o cercam, "suavizando"a tomada de ação.
+
+\section{CMAC}
 
 Com a evolução das tecnologias voltadas ao estudo biológico, e
 principalmente do sistema nervoso, houve uma grande compreensão recente
@@ -809,8 +832,8 @@ por Albus em 1971), porém com ótima capacidade de processamento. Tal
 modelo é muito utilizado na área de Inteligência Artificial e até em alguns
 trabalhos tratando com Aprendizado por Reforço, servindo como método
 para discretização de funções contínuas - como as informações são
-encontradas em ambientes reais. Tal modelo é conhecido como CMAC (Cerebellar 
-Model Articulation Controller) e se baseia em um mapa de
+encontradas em ambientes reais. Tal modelo é conhecido como CMAC (\textit{Cerebellar 
+Model Articulation Controller}) e se baseia em um mapa de
 ladrilhos, montados a partir da tradução das informações de entrada
 em "fibras mucosas", e em seguida em "células granulares", seguindo o
 modelo de cerebelo biológico.
@@ -850,6 +873,9 @@ figura \ref{fig:visao_cima_hipercubos}.
 \end{figure}
 
 \section{Modelo geral para CMAC}
+
+A seguir são descritos os passos para, a partir da aquisição de dados contínuos,
+organizá-los e relacioná-los em um tabela de memória para o SARSA($\lambda$)
 
 \subsection{Mapeando entradas (pertencentes a S) em fibras mucosas (pertencentes a M)}
 
@@ -905,6 +931,15 @@ a_{v} = act_{v} (\vec{s}) \ := \ \prod_{i=1}^{n} act_{ij_{i}} (s_{i}) =
   \end{array}
 \right.
 \end{equation}
+
+\subsection{Mapeando células (pertencentes a A) em saídas (pertencentes a R)}
+
+Cada célula possui seu peso $w$ (valor considerado pela função de aprendizado).
+Dessa forma, a saída pertencente a R da entrada si será dada por:
+\begin{equation}
+\vec{a} \mapsto p \ = \ \vec{a} \cdot \vec{w} \ = \ \sum_{v \in A}^{} a_{v} w_{v} \ = \ \sum_{v \in A^{*}}^{} a_{v} w_{v}
+\end{equation}
+onde av são todas as células ativas com a entrada si.
 
 
 \chapter{Navegação robótica}
