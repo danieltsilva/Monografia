@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.4.1)  19 APR 2013 05:47
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.4.1)  19 APR 2013 10:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -861,7 +861,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.20 ...TD($\lambda $)}{29}{subsubsection.2.3.4.3}
+l.20 ...TD($\lambda $)}{28}{subsubsection.2.3.4.3}
                                                    [5
 
 ])
@@ -999,21 +999,21 @@ Overfull \hbox (24.81801pt too wide) in paragraph at lines 661--663
  []
 
 [29 <./img/visao_adiante.png>]
-<img/grafico_elegibilidade.png, id=297, 402.00188pt x 120.45pt>
+<img/grafico_elegibilidade.png, id=296, 402.00188pt x 120.45pt>
 File: img/grafico_elegibilidade.png Graphic file (type png)
 
 <use img/grafico_elegibilidade.png>
 Package pdftex.def Info: img/grafico_elegibilidade.png used on input line 698.
 (pdftex.def)             Requested size: 402.00089pt x 120.44969pt.
  [30 <./img/grafico_elegibilidade.png>]
-<img/visao_retrograda.png, id=309, 441.14813pt x 211.54031pt>
+<img/visao_retrograda.png, id=306, 441.14813pt x 211.54031pt>
 File: img/visao_retrograda.png Graphic file (type png)
 
 <use img/visao_retrograda.png>
-Package pdftex.def Info: img/visao_retrograda.png used on input line 725.
+Package pdftex.def Info: img/visao_retrograda.png used on input line 724.
 (pdftex.def)             Requested size: 441.14705pt x 211.53978pt.
 
-Overfull \hbox (28.58208pt too wide) in paragraph at lines 725--726
+Overfull \hbox (28.58208pt too wide) in paragraph at lines 724--725
  [][] 
  []
 
@@ -1021,18 +1021,18 @@ Overfull \hbox (28.58208pt too wide) in paragraph at lines 725--726
 Cap\'{\i }tulo 3.
 [34
 
-] <img/disposicao_hipercubos.png, id=337, 496.85625pt x 476.78125pt>
+] <img/disposicao_hipercubos.png, id=332, 496.85625pt x 476.78125pt>
 File: img/disposicao_hipercubos.png Graphic file (type png)
 
 <use img/disposicao_hipercubos.png>
-Package pdftex.def Info: img/disposicao_hipercubos.png used on input line 838.
+Package pdftex.def Info: img/disposicao_hipercubos.png used on input line 836.
 (pdftex.def)             Requested size: 347.797pt x 333.74458pt.
 
-<img/visao_cima_hipercubos.png, id=339, 519.9425pt x 399.4925pt>
+<img/visao_cima_hipercubos.png, id=334, 519.9425pt x 399.4925pt>
 File: img/visao_cima_hipercubos.png Graphic file (type png)
 
 <use img/visao_cima_hipercubos.png>
-Package pdftex.def Info: img/visao_cima_hipercubos.png used on input line 850.
+Package pdftex.def Info: img/visao_cima_hipercubos.png used on input line 848.
 (pdftex.def)             Requested size: 311.96791pt x 239.69734pt.
 
 
@@ -1043,36 +1043,36 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Cap\'{\i }tulo 4.
 [38
 
-] [39] <img/msg.png, id=367, 191.9672pt x 67.0003pt>
+] [39] <img/msg.png, id=362, 191.9672pt x 67.0003pt>
 File: img/msg.png Graphic file (type png)
  <use img/msg.png>
-Package pdftex.def Info: img/msg.png used on input line 971.
+Package pdftex.def Info: img/msg.png used on input line 969.
 (pdftex.def)             Requested size: 143.97504pt x 50.25009pt.
 
-<img/srv.png, id=368, 145.29282pt x 67.0003pt>
+<img/srv.png, id=363, 145.29282pt x 67.0003pt>
 File: img/srv.png Graphic file (type png)
  <use img/srv.png>
-Package pdftex.def Info: img/srv.png used on input line 976.
+Package pdftex.def Info: img/srv.png used on input line 974.
 (pdftex.def)             Requested size: 108.96933pt x 50.25009pt.
 
-<img/script_teste.png, id=370, 520.19344pt x 624.08156pt>
+<img/script_teste.png, id=365, 520.19344pt x 624.08156pt>
 File: img/script_teste.png Graphic file (type png)
 
 <use img/script_teste.png>
-Package pdftex.def Info: img/script_teste.png used on input line 993.
+Package pdftex.def Info: img/script_teste.png used on input line 991.
 (pdftex.def)             Requested size: 416.1553pt x 499.26593pt.
 
-Overfull \hbox (3.59033pt too wide) in paragraph at lines 993--994
+Overfull \hbox (3.59033pt too wide) in paragraph at lines 991--992
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<img/turtlesim.png, id=372, 383.18156pt x 397.485pt>
+<img/turtlesim.png, id=367, 383.18156pt x 397.485pt>
 File: img/turtlesim.png Graphic file (type png)
  <use img/turtlesim.png>
-Package pdftex.def Info: img/turtlesim.png used on input line 1005.
+Package pdftex.def Info: img/turtlesim.png used on input line 1003.
 (pdftex.def)             Requested size: 306.54565pt x 317.98842pt.
 
 
@@ -1080,11 +1080,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [40 <./img/msg.png> <./img/srv.png>] [41 <./img/script_teste.png (PNG copy)>]
 [42 <./img/turtlesim.png>] [43]
-<img/pioneer_2dx.png, id=401, 237.88875pt x 262.73157pt>
+<img/pioneer_2dx.png, id=395, 237.88875pt x 262.73157pt>
 File: img/pioneer_2dx.png Graphic file (type png)
 
 <use img/pioneer_2dx.png>
-Package pdftex.def Info: img/pioneer_2dx.png used on input line 1067.
+Package pdftex.def Info: img/pioneer_2dx.png used on input line 1065.
 (pdftex.def)             Requested size: 237.88815pt x 262.73091pt.
  [44 <./img/pioneer_2dx.png>]
 Cap\'{\i }tulo 5.
@@ -1099,11 +1099,11 @@ AED: lastpage setting LastPage
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1127.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1127.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1125.
 (./Monografia.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1127.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1127.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1125.
 
 Package rerunfilecheck Info: File `Monografia.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -1114,7 +1114,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1127.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1125.
  ) 
 Here is how much of TeX's memory you used:
  10585 strings out of 493485
@@ -1147,10 +1147,10 @@ exmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Monografia.pdf (50 pages, 472640 bytes).
+Output written on Monografia.pdf (50 pages, 472081 bytes).
 PDF statistics:
- 493 PDF objects out of 1000 (max. 8388607)
- 403 compressed objects within 5 object streams
+ 487 PDF objects out of 1000 (max. 8388607)
+ 398 compressed objects within 4 object streams
  120 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -469,7 +469,7 @@ algoritmo de Q-Learning tem por base justamente a iteração dos valores-ação. Des
 primeiramente os valores-ação para cada par $(s,a)$ são inicializados arbitrariamente. Em
 seguida, a partir de um estado inicial \textit{s} qualquer do agente a tarefa se inicia, 
 e para cada ação \textit{a} escolhida os valores-ação devem ser atualizados, até o momento 
-que um estado final é atingido. O algoritmo \ref{alg:q_learning} ilustra isto.
+que um estado final é atingido. O Algoritmo \ref{alg:q_learning} ilustra isto.
 
 
 \begin{algorithm}
@@ -512,7 +512,7 @@ para o algoritmo Q-Learning pois o algoritmo SARSA obtém $a_{t+1}$ pela política
 
 O nome SARSA origina-se da tupla <$s_{t}$, $a_{t}$, $r_{t+1}$, $s_{t+1}$, $a_{t+1}$> 
 utilizada para a atualização dos valores-ação. O algoritmo SARSA está ilustrado 
-no algoritmo \ref{alg:sarsa}.
+no Algoritmo \ref{alg:sarsa}.
 
 \begin{algorithm}
 \caption{SARSA}
@@ -648,7 +648,7 @@ Dado esse novo conceito de retorno $\lambda$, a equação (\ref{eq:incremento_valo
 \end{equation}
 que considera a média de retornos ao invés de um número específico n de passos.
 
-A visão adiante por TD($\lambda$) é assim denominada pois, o agente deve sempre olhar os
+A visão adiante por TD($\lambda$) é assim denominada pois o agente deve sempre olhar os
 passos futuros, visualizar as recompensas esperadas e atribuir pesos a elas para atualização de
 seu estado atual. Dessa forma, a atualização de um estado é realizada apenas uma vez, porém
 considerando o panorama futuro; após atualizar um estado e mover para o próximo passo,
@@ -660,7 +660,7 @@ aqui apresentada de como o agente observa o ambiente e eventos futuros. \cite{su
     \centering
     \includegraphics{visao_adiante}
     \caption[Ilustração de como funciona a visão adiante]{Ilustração de como funciona a visão adiante -- o agente deve olhar apenas o panorama
-futuro para suas considerações atuais. (retirado de \cite{sutton1998reinforcement}) }
+futuro para suas considerações atuais. (retirado de \citeonline{sutton1998reinforcement}) }
     \label{fig:visao_adiante}
 \end{figure}
 
@@ -687,25 +687,24 @@ Os valores de $e_{t}(s)$ são definidos conforme a equação (\ref{eq:traco_elegibi
 compreende-se que o traço de elegibilidade de cada estado decai por um fator $\gamma \lambda$ 
 (sendo $\gamma$ a taxa de desconto e $\lambda$ o parâmetro utilizado na seção 
 \ref{sec:visao_diante_dt} para ponderar as estruturas de \textit{n passos}) para cada passo 
-executado pelo agente e que caso um estado seja revisitado seu traço deve ser incrementado 
+executado pelo agente e que, caso um estado seja revisitado, seu traço deve ser incrementado 
 em 1. Dessa forma, para grandes valores de $\lambda$, ainda menores do que 1,
 mais estados anteriores são alterados, mas cada um daqueles temporalmente mais distantes
-são modificados em menor escala, pois seu traço de elegibilidade é menor. Dizemos que estes
+são alterados em menor escala, pois seu traço de elegibilidade é menor. Dizemos que estes
 últimos estados são menos creditados para o erro TD. A figura \ref{fig:grafico_elegibilidade} mostra como o traço de elegibilidade varia para um estado com o tempo e com o número de visitas a este estado.
 
 \begin{figure}[!h]
     \centering
     \includegraphics{grafico_elegibilidade}
-    \caption[Gráfico do traço de elegibilidade]{Gráfico explicativo sobre como o valor do traço de elegibilidade varia caso ocorram visitas aum mesmo estado.}
+    \caption[Gráfico do traço de elegibilidade]{Gráfico explicativo sobre como o valor do traço de elegibilidade varia caso ocorram visitas a um mesmo estado.}
     \label{fig:grafico_elegibilidade}
 \end{figure}
 
 Ainda resta associar o traço de elegibilidade com a atualização de um valor-estado.
 Diferentemente da visão adiante, na visão retrógrada não se utiliza a média de retornos
 das estruturas de \textit{n passos} para a atualização do valor-estado. Para a visão retrógrada,
-adicionamos o traço de elegibilidade ao cálculo do incremento do valor-estado. As equações
-(\ref{eq:incremento_valor_estado_elegib_parcial}) e (\ref{eq:incremento_valor_estado_elegibilidade}) mostram como, a cada passo, todos os estados recentemente visitados devem
-ter seu respectivo valor-estado alterado em $\Delta V_{t}$.
+adicionamos o traço de elegibilidade ao cálculo do incremento do valor-estado. Assim, a cada passo, todos os estados recentemente visitados devem
+ter seu respectivo valor-estado alterado em $\Delta V_{t}$ com:
 \begin{equation} \label{eq:incremento_valor_estado_elegib_parcial}
 	\delta _{t} = r_{t+1} + \gamma V_{t}(s_{t+1}) - V_{t}(s_{t}) = R_{t}^{(1)} - V_{t}(s_{t}).
 \end{equation}
@@ -714,11 +713,11 @@ ter seu respectivo valor-estado alterado em $\Delta V_{t}$.
 	\Delta V_{t}(s) = \alpha \delta _{t} e_{t}(s).
 \end{equation}
 
-O mecanismo da visão retrógrada é basicamente definido da seguinte forma: em $\delta _{t}$
-um instante \textit{t}, verifica-se o valor de do estado atual e calcula-se o valor de et para todos
+O mecanismo da visão retrógrada é basicamente definido da seguinte forma: um 
+instante \textit{t}, verifica-se o valor de $\delta _{t}$ do estado atual e calcula-se o valor de $e_{t}$ para todos
 os estados até então visitados; em seguida, atualiza-se o valor-estado de todos os estados
 pelos quais o agente já passou e realiza um novo passo. A figura \ref{fig:visao_retrograda} 
-ilustra como o agente se comunica com os estados já visitados para atualização de valores-estado \cite{sutton1998reinforcement}.
+ilustra como o agente se comunica com os estados já visitados para atualização de valores-estado.\cite{sutton1998reinforcement}
 
 \begin{figure}[!h]
     \centering
@@ -741,20 +740,19 @@ de elegibilidade como forma de aproximar os métodos por TD dos métodos de Monte 
 dá-se o nome de SARSA($\lambda$).
 
 A ideia é estender o procedimento adotado pelo problema de predição por TD($\lambda$), que
-se preocupava com a atualização dos valores-estado, até os pares estado-ação (valores-ação).
+se preocupava com a atualização dos valores-estado, para os pares estado-ação (valores-ação).
 Dessa forma, o par estado-ação é que terá a ele associado um valor de traço de elegibilidade
-denotado por $e_{t}(s,a)$. As equações (\ref{eq:sl_incremento_valor_estado_acao}) e 
-(\ref{eq:sl_incremento_valor_acao}) se assemelham muito às equações 
+denotado por $e_{t}(s,a)$. As novas equações se assemelham muito às equações 
 (\ref{eq:incremento_valor_estado_elegib_parcial}) e (\ref{eq:incremento_valor_estado_elegibilidade}), 
 diferenciando-se apenas pela substituição necessária de valores-estado por valores-
 ação e troca do traço de elegibilidade referente ao estado pelo traço referente ao par estado-
-ação (s,a).
+ação $e_{t}(s,a)$:
 \begin{equation} \label{eq:sl_incremento_valor_acao}
-	Q_{t+1}(s,a) = Q_{t}(s,a) + \alpha \delta _{t} e_{t}(s,a).
+	Q_{t+1}(s,a) = Q_{t}(s,a) + \alpha \delta _{t} e_{t}(s,a),
 \end{equation}
 
 \begin{equation} \label{eq:sl_incremento_valor_estado_acao}
-	\delta _{t} = r_{t+1} + \gamma Q_{t}(s_{t+1},a_{t+1}) - Q_{t}(s_{t},a_{t}).
+	\delta _{t} = r_{t+1} + \gamma Q_{t}(s_{t+1},a_{t+1}) - Q_{t}(s_{t},a_{t}),
 \end{equation}
 
 \begin{equation}\label{eq:sl_traco_elegibilidade}
@@ -767,15 +765,14 @@ e_{t}(s,a) =
 \right.
 \end{equation}
 
-
 O algoritmo SARSA($\lambda$) busca alcançar a função valor-ação $Q^{*}(s,a)$ ótima a partir de
 atualizações sucessivas de $Q^{\pi}(s,a)$, portanto seguindo uma política $\pi$. Antes do início de um
 episódio, os valores de $Q(s,a)$ para cada par estado-ação conhecido podem ser definidos
 aleatoriamente, enquanto que os valores de $e_{t}(s,a)$ devem ser iniciados com 0 dado que
 nenhum estado foi visitado até então. Para que um episódio seja iniciado um par (s,a) deve
-ser apontado, ou seja, um estado inicial deve ser escolhido e uma ação a, definida pela política
+ser apontado, ou seja, um estado inicial deve ser observado e uma ação a, definida pela política
 seguida, deve ser tomada. Em seguida, a partir desta ação o agente deve identificar o reforço
-recebido, o novo estado e a próxima ação. O algoritmo (\ref{alg:sarsa_lambda}) apresenta o processo iterativo que
+recebido, o novo estado e a próxima ação. O Algoritmo \ref{alg:sarsa_lambda} apresenta o processo iterativo que
 deve ser realizado para atualizado dos valores de $Q(s,a)$ a cada passo de um episódio, a partir
 dos valores apresentados.
 
@@ -785,9 +782,9 @@ dos valores apresentados.
 \begin{algorithmic}[1]
 	\State Inicializa $Q(s,a)$ arbitrariamente
 	\For{cada episódio}{}{}
-		\State Inicializa $s$, $a$
+		\State Observa $s$, escolhe $a$
 		\For{cada passo do episódio}{}{\ até $s$ ser terminal}
-			\State Toma ação $a$, observe $r$, $s'$
+			\State Executa ação $a$, observa $r$, $s'$
 			\State Escolha $a'$ de $s'$ usando a política derivada de $Q$ (e.g., $\varepsilon$-gananciosa)
 			\State $\delta \leftarrow r + \gamma Q(s',a') - Q(s,a)$
 			\State $e(s,a) \leftarrow e(s,a) + 1$
