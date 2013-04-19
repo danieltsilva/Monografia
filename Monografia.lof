@@ -1,11 +1,11 @@
 \select@language {brazil}
 \contentsline {figure}{\numberline {1}{\ignorespaces Modelo padr\~ao de Aprendizado por Refor\c co}}{15}{figure.caption.8}
 \contentsline {figure}{\numberline {2}{\ignorespaces Abstra\c c\~ao para o valor-estado e o valor-a\c c\~ao}}{23}{figure.caption.9}
-\contentsline {figure}{\numberline {3}{\ignorespaces Modelo do m\'etodo DT de 1 \'unico passo at\'e n}}{26}{figure.caption.10}
-\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de m\'etodos por DT($\lambda $) com atribui\c c\~ao de pesos}}{28}{figure.caption.11}
+\contentsline {figure}{\numberline {3}{\ignorespaces Modelo do m\'etodo TD de 1 \'unico passo at\'e n}}{26}{figure.caption.10}
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de m\'etodos por TD ($\lambda $) com atribui\c c\~ao de pesos}}{28}{figure.caption.11}
 \contentsline {figure}{\numberline {5}{\ignorespaces Ilustra\c c\~ao de como funciona a vis\~ao adiante}}{29}{figure.caption.12}
 \contentsline {figure}{\numberline {6}{\ignorespaces Gr\'afico do tra\c co de elegibilidade}}{30}{figure.caption.13}
-\contentsline {figure}{\numberline {7}{\ignorespaces Ilustra\c c\~ao da vis\~ao retr\'ograda de m\'etodos por DT}}{31}{figure.caption.14}
+\contentsline {figure}{\numberline {7}{\ignorespaces Ilustra\c c\~ao da vis\~ao retr\'ograda de m\'etodos por TD}}{31}{figure.caption.14}
 \contentsline {figure}{\numberline {8}{\ignorespaces Exemplo da disposi\c c\~ao de hipercubos. Com 2 entradas e Q=50.\relax }}{35}{figure.caption.15}
 \contentsline {figure}{\numberline {9}{\ignorespaces Vis\~ao de ``cima'' dos hipercubos}}{36}{figure.caption.16}
 \contentsline {figure}{\numberline {10}{\ignorespaces Descri\c c\~ao dos campos para comunica\c c\~ao\relax }}{40}{figure.caption.17}

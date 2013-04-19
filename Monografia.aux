@@ -26,6 +26,9 @@
 \@writefile{toc}{\contentsline {chapter}{Lista de Tabelas}{}{chapter.0}}
 \@writefile{toc}{\contentsline {chapter}{Lista de Abreviaturas e Siglas}{}{chapter.0}}
 \@writefile{toc}{\contentsline {chapter}{Lista de Símbolos}{}{chapter.0}}
+\citation{sutton1998reinforcement}
+\citation{sutton1998reinforcement}
+\citation{mitchell1997machine}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{12}{chapter.1}}
 \newlabel{chp:intro}{{1}{12}{Introdução\relax }{chapter.1}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Aprendizado por Refor\c co}{14}{chapter.2}}
@@ -33,7 +36,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Modelo padr\~ao de Aprendizado por Refor\c co}}{15}{figure.caption.8}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:modelo_aprendizado_reforco}{{1}{15}{Modelo padrão de Aprendizado por Reforço\relax }{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Processos de Decis\~ao de Markov}{16}{section.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Processos de Decis\~ao de Markov (MDP)}{16}{section.2.1}}
 \newlabel{sec:processos_markov}{{2.1}{16}{Aprendizado por Reforço\relax }{section.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Pol\IeC {\'\i }tica \'otima}{16}{section.2.2}}
 \newlabel{sec:politica_otima}{{2.2}{16}{Aprendizado por Reforço\relax }{section.2.2}{}}
@@ -42,7 +45,7 @@
 \newlabel{eq:valor_acao}{{2.3}{17}{Aprendizado por Reforço\relax }{equation.2.2.3}{}}
 \newlabel{eq:pre_politica_otima}{{2.4}{18}{Aprendizado por Reforço\relax }{equation.2.2.4}{}}
 \newlabel{eq:politica_otima}{{2.5}{18}{Aprendizado por Reforço\relax }{equation.2.2.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}M\'etodo de solu\c c\~ao}{19}{section.2.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}M\'etodos de solu\c c\~oes}{19}{section.2.3}}
 \newlabel{sec:metodo_solucao}{{2.3}{19}{Aprendizado por Reforço\relax }{section.2.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Programa\c c\~ao din\^amica}{19}{subsection.2.3.1}}
 \newlabel{sec:prog_dinamica}{{2.3.1}{19}{Aprendizado por Reforço\relax }{subsection.2.3.1}{}}
@@ -50,51 +53,53 @@
 \newlabel{sec:monte_carlo}{{2.3.2}{19}{Aprendizado por Reforço\relax }{subsection.2.3.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Aprendizado por diferen\c ca temporal}{20}{subsection.2.3.3}}
 \newlabel{sec:diferenca_temporal}{{2.3.3}{20}{Aprendizado por Reforço\relax }{subsection.2.3.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3.1}Predi\c c\~ao DT}{21}{subsubsection.2.3.3.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3.1}Predi\c c\~ao TD}{21}{subsubsection.2.3.3.1}}
 \newlabel{eq:dt0}{{2.6}{21}{Aprendizado por Reforço\relax }{equation.2.3.6}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3.2}Off-Policy e Q-Learning}{22}{subsubsection.2.3.3.2}}
-\newlabel{eq:q_learning}{{2.7}{23}{Aprendizado por Reforço\relax }{equation.2.3.7}{}}
+\newlabel{eq:q_learning}{{2.7}{22}{Aprendizado por Reforço\relax }{equation.2.3.7}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Q-Learning\relax }}{23}{algorithm.1}}
 \newlabel{alg:q_learning}{{1}{23}{Q-Learning\relax \relax }{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3.3}On-Policy SARSA-Learning}{23}{subsubsection.2.3.3.3}}
 \newlabel{sec:on-policy_sarsa-learning}{{2.3.3.3}{23}{Aprendizado por Reforço\relax }{subsubsection.2.3.3.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Abstra\c c\~ao para o valor-estado e o valor-a\c c\~ao}}{23}{figure.caption.9}}
 \newlabel{fig:abst_valor_estado_acao}{{2}{23}{Abstração para o valor-estado e o valor-ação\relax }{figure.caption.9}{}}
-\newlabel{eq:sarsa}{{2.8}{24}{Aprendizado por Reforço\relax }{equation.2.3.8}{}}
+\newlabel{eq:sarsa}{{2.8}{23}{Aprendizado por Reforço\relax }{equation.2.3.8}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces SARSA\relax }}{24}{algorithm.2}}
 \newlabel{alg:sarsa}{{2}{24}{SARSA\relax \relax }{algorithm.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Tra\c cos de elegibilidade}{24}{subsection.2.3.4}}
+\newlabel{sec:traco_elegibilidade}{{2.3.4}{24}{Aprendizado por Reforço\relax }{subsection.2.3.4}{}}
 \citation{sutton1998reinforcement}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Tra\c cos de elegibilidade}{25}{subsection.2.3.4}}
-\newlabel{sec:traco_elegibilidade}{{2.3.4}{25}{Aprendizado por Reforço\relax }{subsection.2.3.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4.1}Predi\c c\~ao por TD de \textit  {n passos}}{25}{subsubsection.2.3.4.1}}
 \citation{sutton1998reinforcement}
 \citation{sutton1998reinforcement}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4.1}Predi\c c\~ao por DT de n passos}{26}{subsubsection.2.3.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Modelo do m\'etodo DT de 1 \'unico passo at\'e n}}{26}{figure.caption.10}}
-\newlabel{fig:modelo_predicao_dt}{{3}{26}{Modelo do método DT de 1 único passo até n\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Modelo do m\'etodo TD de 1 \'unico passo at\'e n}}{26}{figure.caption.10}}
+\newlabel{fig:modelo_predicao_dt}{{3}{26}{Modelo do método TD de 1 único passo até n\relax }{figure.caption.10}{}}
+\newlabel{eq:predicao_dt_1_passo}{{2.9}{26}{Aprendizado por Reforço\relax }{equation.2.3.9}{}}
+\newlabel{eq:predicao_dt_n_passo}{{2.10}{26}{Aprendizado por Reforço\relax }{equation.2.3.10}{}}
 \citation{sutton1998reinforcement}
-\newlabel{eq:predicao_dt_1_passo}{{2.9}{27}{Aprendizado por Reforço\relax }{equation.2.3.9}{}}
-\newlabel{eq:predicao_dt_n_passo}{{2.10}{27}{Aprendizado por Reforço\relax }{equation.2.3.10}{}}
 \newlabel{eq:incremento_valor_estado}{{2.11}{27}{Aprendizado por Reforço\relax }{equation.2.3.11}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao diante de DT($\lambda $)}{27}{subsubsection.2.3.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao adiante de TD($\lambda $)}{27}{subsubsection.2.3.4.2}}
 \newlabel{sec:visao_diante_dt}{{2.3.4.2}{27}{Aprendizado por Reforço\relax }{subsubsection.2.3.4.2}{}}
-\newlabel{eq:media_2_4_passos}{{2.12}{28}{Aprendizado por Reforço\relax }{equation.2.3.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de m\'etodos por DT($\lambda $) com atribui\c c\~ao de pesos}}{28}{figure.caption.11}}
-\newlabel{fig:diagrama_dt_com_pesos}{{4}{28}{Diagrama de métodos por DT($\lambda $) com atribuição de pesos\relax }{figure.caption.11}{}}
-\newlabel{eq:retorno_lambda}{{2.13}{28}{Aprendizado por Reforço\relax }{equation.2.3.13}{}}
+\newlabel{eq:media_2_4_passos}{{2.12}{27}{Aprendizado por Reforço\relax }{equation.2.3.12}{}}
+\newlabel{eq:retorno_lambda}{{2.13}{27}{Aprendizado por Reforço\relax }{equation.2.3.13}{}}
 \citation{sutton1998reinforcement}
-\newlabel{eq:incremento_valor_estado_lambda}{{2.14}{29}{Aprendizado por Reforço\relax }{equation.2.3.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de m\'etodos por TD ($\lambda $) com atribui\c c\~ao de pesos}}{28}{figure.caption.11}}
+\newlabel{fig:diagrama_dt_com_pesos}{{4}{28}{Diagrama de métodos por TD ($\lambda $) com atribuição de pesos\relax }{figure.caption.11}{}}
+\newlabel{eq:incremento_valor_estado_lambda}{{2.14}{28}{Aprendizado por Reforço\relax }{equation.2.3.14}{}}
+\citation{sutton1998reinforcement}
+\citation{sutton1998reinforcement}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Ilustra\c c\~ao de como funciona a vis\~ao adiante}}{29}{figure.caption.12}}
 \newlabel{fig:visao_adiante}{{5}{29}{Ilustração de como funciona a visão adiante\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de DT($\lambda $)}{29}{subsubsection.2.3.4.3}}
-\newlabel{eq:traco_elegibilidade}{{2.15}{30}{Aprendizado por Reforço\relax }{equation.2.3.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de TD($\lambda $)}{29}{subsubsection.2.3.4.3}}
+\newlabel{eq:traco_elegibilidade}{{2.15}{29}{Aprendizado por Reforço\relax }{equation.2.3.15}{}}
+\citation{sutton1998reinforcement}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gr\'afico do tra\c co de elegibilidade}}{30}{figure.caption.13}}
 \newlabel{fig:grafico_elegibilidade}{{6}{30}{Gráfico do traço de elegibilidade\relax }{figure.caption.13}{}}
-\citation{sutton1998reinforcement}
-\newlabel{eq:incremento_valor_estado_elegib_parcial}{{2.16}{31}{Aprendizado por Reforço\relax }{equation.2.3.16}{}}
-\newlabel{eq:incremento_valor_estado_elegibilidade}{{2.17}{31}{Aprendizado por Reforço\relax }{equation.2.3.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Ilustra\c c\~ao da vis\~ao retr\'ograda de m\'etodos por DT}}{31}{figure.caption.14}}
-\newlabel{fig:visao_retrograda}{{7}{31}{Ilustração da visão retrógrada de métodos por DT\relax }{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{32}{subsection.2.3.5}}
+\newlabel{eq:incremento_valor_estado_elegib_parcial}{{2.16}{30}{Aprendizado por Reforço\relax }{equation.2.3.16}{}}
+\newlabel{eq:incremento_valor_estado_elegibilidade}{{2.17}{30}{Aprendizado por Reforço\relax }{equation.2.3.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Ilustra\c c\~ao da vis\~ao retr\'ograda de m\'etodos por TD}}{31}{figure.caption.14}}
+\newlabel{fig:visao_retrograda}{{7}{31}{Ilustração da visão retrógrada de métodos por TD\relax }{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{31}{subsection.2.3.5}}
 \newlabel{eq:sl_incremento_valor_acao}{{2.18}{32}{Aprendizado por Reforço\relax }{equation.2.3.18}{}}
 \newlabel{eq:sl_incremento_valor_estado_acao}{{2.19}{32}{Aprendizado por Reforço\relax }{equation.2.3.19}{}}
 \newlabel{eq:sl_traco_elegibilidade}{{2.20}{32}{Aprendizado por Reforço\relax }{equation.2.3.20}{}}
@@ -137,6 +142,10 @@
 \bibciteEXPL{arkin1998behavior}{Arkin}
 \bibciteIMPL{arkin1998behavior}{ARKIN}
 \bibciteYEAR{arkin1998behavior}{1998}
+\bibcite{mitchell1997machine}{Mitchell 1997}
+\bibciteEXPL{mitchell1997machine}{Mitchell}
+\bibciteIMPL{mitchell1997machine}{MITCHELL}
+\bibciteYEAR{mitchell1997machine}{1997}
 \bibcite{ortiz2008relational}{Ortiz, Garc{\'\i }a e Borrajo 2008}
 \bibciteEXPL{ortiz2008relational}{Ortiz, Garc{\'\i }a e Borrajo}
 \bibciteIMPL{ortiz2008relational}{ORTIZ; GARC{\'I}A; BORRAJO}

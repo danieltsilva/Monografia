@@ -9,6 +9,11 @@
 \abntrefinfo{Arkin}{ARKIN}{1998}
 {ARKIN, R.~C. \emph{Behavior-based robotics}. [S.l.]: MIT press, 1998.}
 
+\bibitem[Mitchell 1997]{mitchell1997machine}
+\abntrefinfo{Mitchell}{MITCHELL}{1997}
+{MITCHELL, T.~M. Machine learning. 1997.
+\emph{Burr Ridge, IL: McGraw Hill}, v.~45, 1997.}
+
 \bibitem[Ortiz, Garc{\'\i}a e Borrajo 2008]{ortiz2008relational}
 \abntrefinfo{Ortiz, Garc{\'\i}a e Borrajo}{ORTIZ; GARC{\'I}A; BORRAJO}{2008}
 {ORTIZ, J.; GARC{\'I}A, A.; BORRAJO, D. A relational learning approach to

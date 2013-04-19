@@ -5,20 +5,20 @@
 \contentsline {chapter}{Lista de Símbolos}{}{chapter.0}
 \contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{12}{chapter.1}
 \contentsline {chapter}{\numberline {2}Aprendizado por Refor\c co}{14}{chapter.2}
-\contentsline {section}{\numberline {2.1}Processos de Decis\~ao de Markov}{16}{section.2.1}
+\contentsline {section}{\numberline {2.1}Processos de Decis\~ao de Markov (MDP)}{16}{section.2.1}
 \contentsline {section}{\numberline {2.2}Pol\IeC {\'\i }tica \'otima}{16}{section.2.2}
-\contentsline {section}{\numberline {2.3}M\'etodo de solu\c c\~ao}{19}{section.2.3}
+\contentsline {section}{\numberline {2.3}M\'etodos de solu\c c\~oes}{19}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Programa\c c\~ao din\^amica}{19}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}M\'etodos de Monte Carlo}{19}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Aprendizado por diferen\c ca temporal}{20}{subsection.2.3.3}
-\contentsline {subsubsection}{\numberline {2.3.3.1}Predi\c c\~ao DT}{21}{subsubsection.2.3.3.1}
+\contentsline {subsubsection}{\numberline {2.3.3.1}Predi\c c\~ao TD}{21}{subsubsection.2.3.3.1}
 \contentsline {subsubsection}{\numberline {2.3.3.2}Off-Policy e Q-Learning}{22}{subsubsection.2.3.3.2}
 \contentsline {subsubsection}{\numberline {2.3.3.3}On-Policy SARSA-Learning}{23}{subsubsection.2.3.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Tra\c cos de elegibilidade}{25}{subsection.2.3.4}
-\contentsline {subsubsection}{\numberline {2.3.4.1}Predi\c c\~ao por DT de n passos}{26}{subsubsection.2.3.4.1}
-\contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao diante de DT($\lambda $)}{27}{subsubsection.2.3.4.2}
-\contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de DT($\lambda $)}{29}{subsubsection.2.3.4.3}
-\contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{32}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.4}Tra\c cos de elegibilidade}{24}{subsection.2.3.4}
+\contentsline {subsubsection}{\numberline {2.3.4.1}Predi\c c\~ao por TD de \textit {n passos}}{25}{subsubsection.2.3.4.1}
+\contentsline {subsubsection}{\numberline {2.3.4.2}A vis\~ao adiante de TD($\lambda $)}{27}{subsubsection.2.3.4.2}
+\contentsline {subsubsection}{\numberline {2.3.4.3}A vis\~ao retr\'ograda de TD($\lambda $)}{29}{subsubsection.2.3.4.3}
+\contentsline {subsection}{\numberline {2.3.5}SARSA($\lambda $)}{31}{subsection.2.3.5}
 \contentsline {chapter}{\numberline {3}CMAC}{34}{chapter.3}
 \contentsline {section}{\numberline {3.1}Associa\c c\~ao no CMAC}{35}{section.3.1}
 \contentsline {section}{\numberline {3.2}Modelo geral para CMAC}{36}{section.3.2}
